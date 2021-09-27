@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Line Drawer</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body>
+
+    <header>
+        <h1>Line Drawer</h1>
+    </header>
+    <main>
+        <div class="input-fields">
+            <form id="form">
+                <input required min="0" type="number" name="" id="x0" placeholder="x0">
+                <input required min="0" type="number" name="" id="x1" placeholder="x1">
+                <input required min="0" type="number" name="" id="y0" placeholder="y0">
+                <input required min="0" type="number" name="" id="y1" placeholder="y1">
+                <input class="draw-button" type="submit" value="Draw" id="draw-button" />
+            </form>
+        </div>
+        <section id="box" class="grid">
+        </section>
+    </main>
+    <script src="./app.js"></script>
+</body>
+
+</html>
