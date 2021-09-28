@@ -46,7 +46,6 @@ function drawGrid(cells, row, col) {
 
 //collecting path
 function generatePath(x0, x1, y0, y1) {
-    cells = [];
     let dx = x1 - x0;
     let dy = y1 - y0;
     let steps = Math.abs(dx) > Math.abs(dy) ? Math.abs(dx) : Math.abs(dy);
@@ -83,6 +82,8 @@ function extractGridProperties() {
 }
 
 coodForm.addEventListener('submit', (e) => {
+    //clearing cells for new path
+    cells = [];
     generatePath(...extractInput());
     e.preventDefault();
 });
