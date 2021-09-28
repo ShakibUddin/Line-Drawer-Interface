@@ -9,20 +9,14 @@ main {
   flex-direction: column;
   padding: 20px;
 }
-.input-fields input {
+.input-fields input,
+select {
   margin: 20px;
   padding: 10px;
 }
 .draw-button {
   padding: 10px;
   font-size: 1rem;
-}
-.grid {
-  width: 500px;
-  height: 500px;
-  display: grid;
-  grid-template-rows: repeat(10, 50px);
-  grid-template-columns: repeat(10, 50px);
 }
 .cell {
   width: 50px;

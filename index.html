@@ -17,15 +17,24 @@
     </header>
     <main>
         <div class="input-fields">
+            <form id="grid-form">
+                <input required min="1" max="20" type="number" name="" id="row" placeholder="row">
+                <input required min="1" max="20" type="number" name="" id="col" placeholder="col">
+                <input class="draw-button" type="submit" value="Draw Grid" id="draw-grid-button" />
+            </form>
             <form id="form">
                 <input required min="0" type="number" name="" id="x0" placeholder="x0">
                 <input required min="0" type="number" name="" id="x1" placeholder="x1">
                 <input required min="0" type="number" name="" id="y0" placeholder="y0">
                 <input required min="0" type="number" name="" id="y1" placeholder="y1">
-                <input class="draw-button" type="submit" value="Draw" id="draw-button" />
+                <select name="algorithms" id="algorithms">
+                    <option value="DDA">DDA</option>
+                    <option value="Bresenham">Bresenham</option>
+                </select>
+                <input class="draw-button" type="submit" value="Draw Line" id="draw-button" />
             </form>
         </div>
-        <section id="box" class="grid">
+        <section id="box">
         </section>
     </main>
     <script src="./app.js"></script>
