@@ -67,13 +67,16 @@ function generatePath(x0, x1, y0, y1) {
 //extracting inputs
 function extractInput() {
     let input = [parseInt(x0.value), parseInt(x1.value), parseInt(y0.value), parseInt(y1.value)];
+    clearCoodInputFields();
+    return input;
+}
+
+function clearCoodInputFields() {
     x0.value = "";
     x1.value = "";
     y0.value = "";
     y1.value = "";
-    return input;
 }
-
 function extractGridProperties() {
     gridRow = parseInt(rowInput.value);
     gridCol = parseInt(colInput.value);
@@ -94,6 +97,7 @@ gridForm.addEventListener('submit', (e) => {
     grid.innerHTML = "";
     //clearing previous cells
     cells = [];
+    clearCoodInputFields();
     setGridProperties(gridRow, gridCol);
     drawGrid(cells, gridRow, gridCol);
     e.preventDefault();
