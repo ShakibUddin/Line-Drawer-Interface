@@ -18,10 +18,10 @@ function setGridProperties(row, col) {
     grid.style.gridTemplateRows = `repeat(${row},50px)`;
     grid.style.gridTemplateColumns = `repeat(${col},50px)`;
     //setting max value of input based on grid row and col
-    x0.setAttribute("max", row - 1);
-    x1.setAttribute("max", row - 1);
-    y0.setAttribute("max", col - 1);
-    y1.setAttribute("max", col - 1);
+    x0.setAttribute("max", col - 1);
+    x1.setAttribute("max", col - 1);
+    y0.setAttribute("max", row - 1);
+    y1.setAttribute("max", row - 1);
 }
 
 //drawing/updating board
