@@ -1,8 +1,8 @@
 let grid = document.getElementById("box");
 let cells = [];
-let x, y;
-let row = document.getElementById('row');
-let col = document.getElementById('col');
+let gridRow, gridCol;
+let rowInput = document.getElementById('row');
+let colInput = document.getElementById('col');
 let x0 = document.getElementById('x0');
 let x1 = document.getElementById('x1');
 let y0 = document.getElementById('y0');
@@ -16,6 +16,10 @@ function setGridProperties(row, col) {
     grid.style.display = "grid";
     grid.style.gridTemplateRows = `repeat(${row},50px)`;
     grid.style.gridTemplateColumns = `repeat(${col},50px)`;
+    x0.ariaValueMax = row;
+    x1.ariaValueMax = row;
+    y0.ariaValueMax = col;
+    y1.ariaValueMax = col;
 }
 
 //drawing/updating board
@@ -32,7 +36,6 @@ function drawGrid(cells, row, col) {
             cell.classList.add('cell');
             if (colorPath && cells.includes(`${i},${j}`)) {
                 cell.style.color = "white";
-                console.log(`color ${i},${j}`)
                 cell.style.backgroundColor = "blue";
                 cell.classList.add('animate__bounceIn');
             }
@@ -44,7 +47,6 @@ function drawGrid(cells, row, col) {
 //collecting path
 function generatePath(x0, x1, y0, y1) {
     cells = [];
-    console.log(x0, x1, y0, y1)
     let dx = x1 - x0;
     let dy = y1 - y0;
     let steps = Math.abs(dx) > Math.abs(dy) ? Math.abs(dx) : Math.abs(dy);
@@ -59,7 +61,8 @@ function generatePath(x0, x1, y0, y1) {
         y += yIncrement;
         cells.push(`${Math.round(x)},${Math.round(y)}`);
     }
-    drawGrid(cells, x, y);
+    console.log(cells);
+    drawGrid(cells, gridRow, gridCol);
 }
 
 //extracting inputs
@@ -73,11 +76,10 @@ function extractInput() {
 }
 
 function extractGridProperties() {
-    x = parseInt(row.value);
-    y = parseInt(col.value);
-    row.value = "";
-    col.value = "";
-    return [x, y];
+    gridRow = parseInt(rowInput.value);
+    gridCol = parseInt(colInput.value);
+    rowInput.value = "";
+    colInput.value = "";
 }
 
 coodForm.addEventListener('submit', (e) => {
@@ -86,10 +88,12 @@ coodForm.addEventListener('submit', (e) => {
 });
 
 gridForm.addEventListener('submit', (e) => {
+    extractGridProperties();
     //clearing grid to make a new one
     grid.innerHTML = "";
-    let gridProperties = extractGridProperties();
-    setGridProperties(...gridProperties);
-    drawGrid(cells, ...gridProperties);
+    //clearing previous cells
+    cells = [];
+    setGridProperties(gridRow, gridCol);
+    drawGrid(cells, gridRow, gridCol);
     e.preventDefault();
 });
