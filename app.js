@@ -14,8 +14,10 @@ let gridForm = document.getElementById('grid-form');
 
 function setGridProperties(row, col) {
     grid.style.display = "grid";
+    //each cell is 50px wide
     grid.style.gridTemplateRows = `repeat(${row},50px)`;
     grid.style.gridTemplateColumns = `repeat(${col},50px)`;
+    //setting max value of input based on grid row and col
     x0.setAttribute("max", row - 1);
     x1.setAttribute("max", row - 1);
     y0.setAttribute("max", col - 1);
@@ -36,7 +38,14 @@ function drawGrid(cells, row, col) {
             cell.classList.add('cell');
             if (colorPath && cells.includes(`${i},${j}`)) {
                 cell.style.color = "white";
-                cell.style.backgroundColor = "blue";
+                //coloring first cell green
+                if (cells[0] === `${i},${j}`) cell.style.backgroundColor = "green";
+                //coloring last cell red
+                else if (cells[cells.length - 1] === `${i},${j}`) cell.style.backgroundColor = "red";
+                //coloring other cell blue
+                else {
+                    cell.style.backgroundColor = "blue";
+                }
                 cell.classList.add('animate__bounceIn');
             }
             grid.appendChild(cell);
@@ -77,6 +86,7 @@ function clearCoodInputFields() {
     y0.value = "";
     y1.value = "";
 }
+
 function extractGridProperties() {
     gridRow = parseInt(rowInput.value);
     gridCol = parseInt(colInput.value);
