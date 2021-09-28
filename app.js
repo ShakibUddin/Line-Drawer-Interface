@@ -16,10 +16,10 @@ function setGridProperties(row, col) {
     grid.style.display = "grid";
     grid.style.gridTemplateRows = `repeat(${row},50px)`;
     grid.style.gridTemplateColumns = `repeat(${col},50px)`;
-    x0.ariaValueMax = row;
-    x1.ariaValueMax = row;
-    y0.ariaValueMax = col;
-    y1.ariaValueMax = col;
+    x0.setAttribute("max", row - 1);
+    x1.setAttribute("max", row - 1);
+    y0.setAttribute("max", col - 1);
+    y1.setAttribute("max", col - 1);
 }
 
 //drawing/updating board
